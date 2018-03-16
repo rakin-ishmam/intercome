@@ -8,8 +8,8 @@ type Filter struct {
 
 // SetOffLoc sets office location
 func (f *Filter) SetOffLoc(lat float64, lng float64) {
-	f.offLoc.Lat = lat
-	f.offLoc.Lng = lng
+	f.offLoc.Lat = number(lat)
+	f.offLoc.Lng = number(lng)
 }
 
 // SetMaxDist sets maximum distance from office location
