@@ -59,8 +59,19 @@ func (t *task) Read(fileLoc string) {
 }
 
 func (t *task) List(f Filter) []Customer {
+	fltCusts := []Customer{}
 
-	return t.customers
+	for _, c := range t.customers {
+		dist := f.offLoc.KiloDist(Location{
+			Lat: c.Lat,
+			Lng: c.Lng,
+		})
+
+		if dist <= f.maxDist {
+			fltCusts = append(fltCusts, c)
+		}
+	}
+	return fltCusts
 }
 
 func (t task) Err() error {
