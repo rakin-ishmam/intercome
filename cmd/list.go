@@ -23,6 +23,7 @@ import (
 )
 
 var fileLoc string
+var maxDist float64
 
 // listCmd represents the list command
 var listCmd = &cobra.Command{
@@ -39,7 +40,7 @@ var listCmd = &cobra.Command{
 
 		flt := invite.Filter{}
 		flt.SetOffLoc(53.339428, -6.257664)
-		flt.SetMaxDist(100)
+		flt.SetMaxDist(maxDist)
 
 		custs := inv.List(flt)
 
@@ -54,4 +55,5 @@ func init() {
 	rootCmd.AddCommand(listCmd)
 
 	listCmd.Flags().StringVarP(&fileLoc, "file", "f", "./customer.json", "file location")
+	listCmd.Flags().Float64VarP(&maxDist, "dist", "d", 100, "maximum distance from office")
 }
