@@ -71,6 +71,9 @@ func (t *task) List(f Filter) []Customer {
 			fltCusts = append(fltCusts, c)
 		}
 	}
+
+	By(f.sortF()).Sort(fltCusts)
+
 	return fltCusts
 }
 

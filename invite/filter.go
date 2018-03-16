@@ -16,3 +16,9 @@ func (f *Filter) SetOffLoc(lat float64, lng float64) {
 func (f *Filter) SetMaxDist(dist float64) {
 	f.maxDist = dist
 }
+
+func (f Filter) sortF() func(c1, c2 *Customer) bool {
+	return func(c1, c2 *Customer) bool {
+		return c1.UserID < c2.UserID
+	}
+}
